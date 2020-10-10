@@ -30,6 +30,8 @@ optional arguments:
 # Laravel 7 supported syntax
 Combinations of all these examples are possible as well.
 
+The script will detect duplicate Controllers (by name) and sets an alias for this controller.
+
 ## Simple route syntax
 ```
 Route::get('/foo/bars', 'FooBarsController@index');

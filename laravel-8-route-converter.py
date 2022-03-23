@@ -111,8 +111,18 @@ def convert_routes_file(routes_file):
 
     for line in fileContent:
 
-        # remove php flag
+        # Remove php flag
         if '<?php' in line:
+            continue
+        
+        # Route view
+        if 'Route::view' in line:
+            routes.append(line)
+            continue
+
+        # Route closure
+        if "function" in line:
+            routes.append(line)
             continue
 
         # Route group
@@ -127,7 +137,7 @@ def convert_routes_file(routes_file):
             )
             continue
         
-        elif '});' in line and len(line) - len(line.lstrip(' ')) == group:
+        elif '} );' in line and len(line) - len(line.lstrip(' ')) == group:
 
             namespace.pop()
 
